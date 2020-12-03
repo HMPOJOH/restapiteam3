@@ -22,8 +22,17 @@ public class EmployeeRestController {
     }
 
     @PostMapping("/employees")
-    public Employee post(@RequestBody E,ploye book) {
-        return repository.addBook(book);
+    public Employee post(@RequestBody Employee employee) {
+        return repository.addEmployee(employee);
     }
 
+    @PutMapping("/employees/{id}")
+    public Employee put(@PathVariable Long id, @RequestBody Employee employee) {
+        return repository.editEmployee(employee);
+    }
+
+    @DeleteMapping("/employees/{id}")
+    public void delete(@PathVariable Long id) {
+        repository.deleteEmployee(id);
+    }
 }

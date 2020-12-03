@@ -37,4 +37,27 @@ public class EmployeeRepository {
         return employee;
     }
 
+
+    // edit an employee
+    public Employee editEmployee(Employee employee) {
+        Employee employeeToEdit = this.getEmployee(employee.getId());
+        if (employeeToEdit != null) {
+            employeeToEdit.setFirstName(employee.getFirstName());
+            employeeToEdit.setLastName(employee.getLastName());
+            employeeToEdit.setSSN(employee.getSSN());
+
+            employeeToEdit.setSalary(employee.getSalary());
+            employeeToEdit.setActive(employee.getActive());
+            employeeToEdit.setStartDate(employee.getStartDate());
+        }
+        return employee;
+    }
+
+    // delete an employee
+    public void deleteEmployee(Long id) {
+        Employee employeeToDelete = this.getEmployee(id);
+        if (employeeToDelete != null) {
+            employees.remove(employeeToDelete);
+        }
+    }
 }
