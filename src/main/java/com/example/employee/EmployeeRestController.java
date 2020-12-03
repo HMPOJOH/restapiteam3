@@ -27,8 +27,9 @@ public class EmployeeRestController {
     }
 
     @PutMapping("/employees/{id}")
-    public Employee put(@PathVariable Long id, @RequestBody Employee employee) {
-        return repository.editEmployee(employee);
+    public Employee put(@PathVariable Long id, @RequestBody Employee employeeFromBody) {
+        employeeFromBody.setId(id);
+        return repository.editEmployee(employeeFromBody);
     }
 
     @DeleteMapping("/employees/{id}")
