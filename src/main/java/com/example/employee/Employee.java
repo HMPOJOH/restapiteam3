@@ -6,15 +6,20 @@ public class Employee {
     private String firstName;
     private String lastName;
     private String SSN;
+    private String department;
     private Integer salary;
     private Boolean active;
     private String startDate;
 
-    public Employee(Long id, String firstName, String lastName, String SSN, Integer salary, Boolean active, String startDate) {
+
+
+
+    public Employee(Long id, String firstName, String lastName, String SSN,String department, Integer salary, Boolean active, String startDate) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.SSN = SSN;
+        this.department=department;
         this.salary = salary;
         this.active = false;
         this.startDate = startDate;
@@ -79,6 +84,13 @@ public class Employee {
         this.startDate = startDate;
     }
 
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
 
 
 

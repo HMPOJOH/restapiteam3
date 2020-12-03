@@ -13,11 +13,11 @@ public class EmployeeRepository {
 
     public EmployeeRepository(){
         employees = new ArrayList<>();
-        employees.add(new Employee(1L, "Greta", "Garbo","19450408",500000,false,"1965-01-01"));
-        employees.add(new Employee(2L, "Arne", "Bengtsspn","19450412",300000,false,"1965-01-01"));
-        employees.add(new Employee(3L, "Lena", "Johansson","19450401",600000,false,"1965-01-01"));
-        employees.add(new Employee(4L, "Gösta", "Aronsson","19690108",700000,false,"1965-01-01"));
-        employees.add(new Employee(5L, "Berit", "Göransson","19800458",500000,false,"1965-01-01"));
+        employees.add(new Employee(1L, "Greta", "Garbo","19450408","Sales",500000,false,"1965-01-01"));
+        employees.add(new Employee(2L, "Arne", "Bengtsspn","19450412","Business Tech",300000,false,"1965-01-01"));
+        employees.add(new Employee(3L, "Lena", "Johansson","19450401","Marketing",600000,false,"1965-01-01"));
+        employees.add(new Employee(4L, "Gösta", "Aronsson","19690108","IT",700000,false,"1965-01-01"));
+        employees.add(new Employee(5L, "Berit", "Göransson","19800458","Customer Service",500000,false,"1965-01-01"));
     }
 
     // get one Employee
@@ -53,7 +53,7 @@ public class EmployeeRepository {
             employeeToEdit.setFirstName(employee.getFirstName());
             employeeToEdit.setLastName(employee.getLastName());
             employeeToEdit.setSSN(employee.getSSN());
-
+            employeeToEdit.setDepartment(employee.getDepartment());
             employeeToEdit.setSalary(employee.getSalary());
             employeeToEdit.setActive(employee.getActive());
             employeeToEdit.setStartDate(employee.getStartDate());
