@@ -22,8 +22,8 @@ public class EmployeeRestController {
     }
 
     @PostMapping("/employees")
-    public Employee post(@RequestBody E,ploye book) {
-        return repository.addBook(book);
+    public Employee post(@RequestBody Employee employee) {
+        return repository.addEmployee(employee);
     }
 
 }
