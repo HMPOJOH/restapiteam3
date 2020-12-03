@@ -1,10 +1,10 @@
-package com.example.restapiteam3;
+package com.example.employee;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Restapiteam3ApplicationTests {
+class EmployeeApplicationTests {
 
 	@Test
 	void contextLoads() {

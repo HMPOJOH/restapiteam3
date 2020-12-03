@@ -1,13 +1,13 @@
-package com.example.restapiteam3;
+package com.example.employee;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Restapiteam3Application {
+public class EmployeeApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Restapiteam3Application.class, args);
+		SpringApplication.run(EmployeeApplication.class, args);
 	}
 
 }
