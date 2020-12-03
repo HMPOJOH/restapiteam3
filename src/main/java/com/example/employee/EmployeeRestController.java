@@ -23,8 +23,10 @@ public class EmployeeRestController {
         //ResponseEntity.status(HttpStatus.NOT_FOUND);
         Employee getEmployee = repository.getEmployee(id);
 
-        return getEmployee!=null?ResponseEntity.status(HttpStatus.OK).body(getEmployee):ResponseEntity.status(HttpStatus.NOT_FOUND).body(getEmployee);
-
+        if(getEmployee!=null)
+           return ResponseEntity.status(HttpStatus.OK).body(getEmployee);
+        else
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(getEmployee);
     }
 
     @PostMapping("/employees")
@@ -45,6 +47,9 @@ public class EmployeeRestController {
 
        Boolean employeeExist = repository.deleteEmployee(id);
 
-        return employeeExist?ResponseEntity.status(HttpStatus.NO_CONTENT).body(""):ResponseEntity.status(HttpStatus.NOT_FOUND).body("");
+        if(employeeExist)
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("");
+        else
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("");
     }
 }
