@@ -1,5 +1,7 @@
 package com.example.employee;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -38,6 +40,8 @@ public class EmployeeRepository {
         employee.setId(lastEmployee.getId()+1); // set an id on the new book, should be unique, will be done by the database in future exercises
         employees.add(employee);
         return employee;
+
+
     }
 
 
@@ -58,10 +62,12 @@ public class EmployeeRepository {
     }
 
     // delete an employee
-    public void deleteEmployee(Long id) {
+    public Boolean deleteEmployee(Long id) {
         Employee employeeToDelete = this.getEmployee(id);
         if (employeeToDelete != null) {
             employees.remove(employeeToDelete);
+            return true;
         }
+        return false;
     }
 }

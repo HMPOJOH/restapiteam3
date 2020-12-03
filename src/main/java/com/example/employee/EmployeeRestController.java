@@ -1,5 +1,7 @@
 package com.example.employee;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,13 +19,19 @@ public class EmployeeRestController {
     }
 
     @GetMapping("/employees/{id}")
-    public Employee employee(@PathVariable Long id){
-        return repository.getEmployee(id);
+    public ResponseEntity<Employee> employee(@PathVariable Long id){
+        //ResponseEntity.status(HttpStatus.NOT_FOUND);
+        Employee getEmployee = repository.getEmployee(id);
+
+        return getEmployee!=null?ResponseEntity.status(HttpStatus.OK).body(getEmployee):ResponseEntity.status(HttpStatus.NOT_FOUND).body(getEmployee);
+
     }
 
     @PostMapping("/employees")
-    public Employee post(@RequestBody Employee employee) {
-        return repository.addEmployee(employee);
+    public ResponseEntity<Employee> post(@RequestBody Employee employee) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(repository.addEmployee(employee));
+
+
     }
 
     @PutMapping("/employees/{id}")
@@ -33,7 +41,10 @@ public class EmployeeRestController {
     }
 
     @DeleteMapping("/employees/{id}")
-    public void delete(@PathVariable Long id) {
-        repository.deleteEmployee(id);
+    public ResponseEntity<String>  delete(@PathVariable Long id) {
+
+       Boolean employeeExist = repository.deleteEmployee(id);
+
+        return employeeExist?ResponseEntity.status(HttpStatus.NO_CONTENT).body(""):ResponseEntity.status(HttpStatus.NOT_FOUND).body("");
     }
 }
