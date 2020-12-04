@@ -37,7 +37,9 @@ public class EmployeeRepository {
     // add an employee
     public Employee addEmployee(Employee employee) {
         Employee lastEmployee = employees.get(employees.size()-1);
-        employee.setId(lastEmployee.getId()+1); // set an id on the new book, should be unique, will be done by the database in future exercises
+        employee.setId(lastEmployee.getId()+1);
+        if(employee.getActive()==null)
+            employee.setActive(false);// set an id on the new book, should be unique, will be done by the database in future exercises
         employees.add(employee);
         return employee;
 
@@ -51,14 +53,15 @@ public class EmployeeRepository {
         if (employeeToEdit != null) {
             employeeToEdit.setId(employee.getId());
             employeeToEdit.setFirstName(employee.getFirstName());
-            employeeToEdit.setLastName(employee.getLastName());
-            employeeToEdit.setSSN(employee.getSSN());
+         //  if(employee.getLastName()!=null && employee.getLastName().equals(employeeToEdit.getLastName()))
+                employeeToEdit.setLastName(employee.getLastName());
             employeeToEdit.setDepartment(employee.getDepartment());
             employeeToEdit.setSalary(employee.getSalary());
             employeeToEdit.setActive(employee.getActive());
-            employeeToEdit.setStartDate(employee.getStartDate());
+            //ssn och startdate inte möjlighet att editera.
+
         }
-        return employee;
+        return employeeToEdit;
     }
 
     // delete an employee

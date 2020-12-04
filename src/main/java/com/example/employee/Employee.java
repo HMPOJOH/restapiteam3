@@ -21,7 +21,7 @@ public class Employee {
         this.SSN = SSN;
         this.department=department;
         this.salary = salary;
-        this.active = false;
+        this.active = active;
         this.startDate = startDate;
     }
 

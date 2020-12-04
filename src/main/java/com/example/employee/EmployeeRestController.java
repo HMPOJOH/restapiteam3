@@ -39,6 +39,7 @@ public class EmployeeRestController {
     @PutMapping("/employees/{id}")
     public Employee put(@PathVariable Long id, @RequestBody Employee employeeFromBody) {
         employeeFromBody.setId(id);
+        System.out.println(employeeFromBody.getActive());
         return repository.editEmployee(employeeFromBody);
     }
 
