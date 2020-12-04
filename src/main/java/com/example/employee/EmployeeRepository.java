@@ -20,7 +20,6 @@ public class EmployeeRepository {
         employees.add(new Employee(5L, "Berit", "Göransson","19800458","Customer Service",500000,false,"1965-01-01"));
         employees.add(new Employee(6L, "Hasse", "Hansson","19800458","Customer Service",500000,false,"1965-01-01"));
         employees.add(new Employee(7L, "Niklas", "Istenes","19860458","Customer Service",500000,false,"1965-01-01"));
-        employees.add(new Employee(8L, "Test", "testsson","19860458","TEST",500000,false,"1965-01-01"));
     }
 
     // get one Employee
