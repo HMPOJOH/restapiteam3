@@ -52,4 +52,19 @@ class EmployeeApplicationTests {
 
 
 	}
+
+	@Test
+	public void testPostEmployee2() throws Exception {
+
+
+		mvc.perform(
+				MockMvcRequestBuilders.post("/employees")
+						.content(mapper.writeValueAsString(new Employee(null, "Anna", "Andersson", "10", "HQ", 151515,null, "2020-12-18" )))
+						.contentType(MediaType.APPLICATION_JSON_UTF8)
+		)
+				.andExpect(status().isOk())
+				.andExpect(MockMvcResultMatchers.content().string(containsString("Anna")));
+
+
+	}
 }
