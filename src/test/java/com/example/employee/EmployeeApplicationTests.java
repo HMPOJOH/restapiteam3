@@ -12,6 +12,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -32,9 +33,9 @@ class EmployeeApplicationTests {
 
 	@Test
 	public void testGetEmployeeById() throws Exception {
-		mvc.perform(MockMvcRequestBuilders.get("/employees/4"))
+		mvc.perform(MockMvcRequestBuilders.get("/employees/3"))
 				.andExpect(status().is2xxSuccessful())
-				.andExpect(MockMvcResultMatchers.content().string(containsString("Aronsson")));
+				.andExpect(MockMvcResultMatchers.content().string(containsString("Johansson")));
 		//added one comment
 	}
 
@@ -79,6 +80,42 @@ class EmployeeApplicationTests {
 				.andExpect(status().is2xxSuccessful())
 				.andExpect(MockMvcResultMatchers.content().string(containsString("Svensson")));
 
+
+	}
+
+	@Test
+	public void testDeleteEmployeeById() throws Exception {
+
+		//get id 4 = Aronsson
+		mvc.perform(MockMvcRequestBuilders.get("/employees/4"))
+				.andExpect(status().is2xxSuccessful())
+				.andExpect(MockMvcResultMatchers.content().string(containsString("Aronsson")));
+
+		//delete id 4 Aronsson
+		mvc.perform(
+				MockMvcRequestBuilders.delete("/employees/4")
+		)
+				.andExpect(status().isNoContent());
+
+
+		//Check Aronsson not existing
+		mvc.perform(
+				MockMvcRequestBuilders.get("/employees")
+		)
+				.andExpect(status().is2xxSuccessful())
+				.andExpect(MockMvcResultMatchers.content().string(not(containsString("Aronsson"))));
+
+
+	}
+
+	@Test
+	public void testDeleteEmployeeByIdThatIsNotFound() throws Exception {
+
+
+		mvc.perform(
+				MockMvcRequestBuilders.delete("/employees/9")
+		)
+				.andExpect(status().isNotFound());
 
 	}
 
