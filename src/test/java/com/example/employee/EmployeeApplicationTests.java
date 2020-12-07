@@ -53,5 +53,34 @@ class EmployeeApplicationTests {
 
 	}
 
+	@Test
+	public void testPutEmployee() throws Exception{
+		//get Berit Göransson id 5
+
+		mvc.perform(
+				MockMvcRequestBuilders.get("/employees/5")
+						.contentType(MediaType.APPLICATION_JSON_UTF8)
+		)
+				.andExpect(status().is2xxSuccessful())
+				.andExpect(MockMvcResultMatchers.content().string(containsString("Goransson")));
+
+		//Change Göransson --> Svensson
+		mvc.perform(
+				MockMvcRequestBuilders.put("/employees/5")
+						.content(mapper.writeValueAsString(new Employee(5L, "Berit", "Svensson", "19800458","Customer Service",500000,false,"1965-01-01" )))
+						.contentType(MediaType.APPLICATION_JSON_UTF8)
+		)
+				.andExpect(status().is2xxSuccessful());
+		//get Berit Svensson id 5
+		mvc.perform(
+				MockMvcRequestBuilders.get("/employees/5")
+						.contentType(MediaType.APPLICATION_JSON_UTF8)
+		)
+				.andExpect(status().is2xxSuccessful())
+				.andExpect(MockMvcResultMatchers.content().string(containsString("Svensson")));
+
+
+	}
+
 
 }
