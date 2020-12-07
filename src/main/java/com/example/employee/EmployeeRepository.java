@@ -17,7 +17,7 @@ public class EmployeeRepository {
         employees.add(new Employee(2L, "Arne", "Bengtsspn","19450412","Business Tech",300000,false,"1965-01-01"));
         employees.add(new Employee(3L, "Lena", "Johansson","19450401","Marketing",600000,false,"1965-01-01"));
         employees.add(new Employee(4L, "Gösta", "Aronsson","19690108","IT",700000,false,"1965-01-01"));
-        employees.add(new Employee(5L, "Berit", "Göransson","19800458","Customer Service",500000,false,"1965-01-01"));
+        employees.add(new Employee(5L, "Berit", "Goransson","19800458","Customer Service",500000,false,"1965-01-01"));
         employees.add(new Employee(6L, "Hasse", "Hansson","19800458","Customer Service",500000,false,"1965-01-01"));
         employees.add(new Employee(7L, "Niklas", "Istenes","19860458","Customer Service",500000,false,"1965-01-01"));
     }
