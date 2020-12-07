@@ -68,7 +68,7 @@ class EmployeeApplicationTests {
 		//Change Göransson --> Svensson
 		mvc.perform(
 				MockMvcRequestBuilders.put("/employees/5")
-						.content(mapper.writeValueAsString(new Employee(5L, "Berit", "Svensson", "19800458","Customer Service",500000,false,"1965-01-01" )))
+						.content(mapper.writeValueAsString(new Employee("5", "Berit", "Svensson", "19800458","Customer Service",500000,false,"1965-01-01" )))
 						.contentType(MediaType.APPLICATION_JSON_UTF8)
 		)
 				.andExpect(status().is2xxSuccessful());

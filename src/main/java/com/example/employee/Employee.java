@@ -2,7 +2,7 @@ package com.example.employee;
 
 public class Employee {
 
-    private Long id;
+    private String id;
     private String firstName;
     private String lastName;
     private String SSN;
@@ -14,7 +14,7 @@ public class Employee {
 
 
 
-    public Employee(Long id, String firstName, String lastName, String SSN,String department, Integer salary, Boolean active, String startDate) {
+    public Employee(String id, String firstName, String lastName, String SSN,String department, Integer salary, Boolean active, String startDate) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -28,11 +28,11 @@ public class Employee {
 
 
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

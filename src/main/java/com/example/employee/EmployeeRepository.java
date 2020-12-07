@@ -13,18 +13,18 @@ public class EmployeeRepository {
 
     public EmployeeRepository(){
         employees = new ArrayList<>();
-        employees.add(new Employee(1L, "Greta", "Garbo","19450408","Sales",500000,false,"1965-01-01"));
-        employees.add(new Employee(2L, "Arne", "Bengtsspn","19450412","Business Tech",300000,false,"1965-01-01"));
-        employees.add(new Employee(3L, "Lena", "Johansson","19450401","Marketing",600000,false,"1965-01-01"));
-        employees.add(new Employee(4L, "Gösta", "Aronsson","19690108","IT",700000,false,"1965-01-01"));
-        employees.add(new Employee(5L, "Berit", "Goransson","19800458","Customer Service",500000,false,"1965-01-01"));
-        employees.add(new Employee(6L, "Hasse", "Hansson","19800458","Customer Service",500000,false,"1965-01-01"));
-        employees.add(new Employee(7L, "Niklas", "Istenes","19860458","Customer Service",500000,false,"1965-01-01"));
-        employees.add(new Employee(8L, "Test", "testsson","19860458","TEST",500000,false,"1965-01-01"));
+        employees.add(new Employee("1", "Greta", "Garbo","19450408","Sales",500000,false,"1965-01-01"));
+        employees.add(new Employee("2", "Arne", "Bengtsspn","19450412","Business Tech",300000,false,"1965-01-01"));
+        employees.add(new Employee("3", "Lena", "Johansson","19450401","Marketing",600000,false,"1965-01-01"));
+        employees.add(new Employee("4", "Gösta", "Aronsson","19690108","IT",700000,false,"1965-01-01"));
+        employees.add(new Employee("5", "Berit", "Goransson","19800458","Customer Service",500000,false,"1965-01-01"));
+        employees.add(new Employee("6", "Hasse", "Hansson","19800458","Customer Service",500000,false,"1965-01-01"));
+        employees.add(new Employee("7", "Niklas", "Istenes","19860458","Customer Service",500000,false,"1965-01-01"));
+        employees.add(new Employee("8", "Test", "testsson","19860458","TEST",500000,false,"1965-01-01"));
     }
 
     // get one Employee
-    public Employee getEmployee(Long id) {
+    public Employee getEmployee(String id) {
         for (Employee employee : employees) {
             if (employee.getId().equals(id)) {
                 return employee;
@@ -40,7 +40,7 @@ public class EmployeeRepository {
     // add an employee
     public Employee addEmployee(Employee employee) {
         Employee lastEmployee = employees.get(employees.size()-1);
-        employee.setId(lastEmployee.getId()+1);
+        employee.setId(String.valueOf(Integer.valueOf(lastEmployee.getId())+1));
         if(employee.getActive()==null)
             employee.setActive(false);// set an id on the new book, should be unique, will be done by the database in future exercises
         employees.add(employee);
@@ -68,7 +68,7 @@ public class EmployeeRepository {
     }
 
     // delete an employee
-    public Boolean deleteEmployee(Long id) {
+    public Boolean deleteEmployee(String id) {
         Employee employeeToDelete = this.getEmployee(id);
         if (employeeToDelete != null) {
             employees.remove(employeeToDelete);

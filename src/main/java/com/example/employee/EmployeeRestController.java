@@ -19,7 +19,7 @@ public class EmployeeRestController {
     }
 
     @GetMapping("/employees/{id}")
-    public ResponseEntity<Employee> employee(@PathVariable Long id){
+    public ResponseEntity<Employee> employee(@PathVariable String id){
         //ResponseEntity.status(HttpStatus.NOT_FOUND);
         Employee getEmployee = repository.getEmployee(id);
 
@@ -37,14 +37,14 @@ public class EmployeeRestController {
     }
 
     @PutMapping("/employees/{id}")
-    public Employee put(@PathVariable Long id, @RequestBody Employee employeeFromBody) {
+    public Employee put(@PathVariable String id, @RequestBody Employee employeeFromBody) {
         employeeFromBody.setId(id);
         System.out.println(employeeFromBody.getActive());
         return repository.editEmployee(employeeFromBody);
     }
 
     @DeleteMapping("/employees/{id}")
-    public ResponseEntity<String>  delete(@PathVariable Long id) {
+    public ResponseEntity<String>  delete(@PathVariable String id) {
 
        Boolean employeeExist = repository.deleteEmployee(id);
 
